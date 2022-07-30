@@ -39,13 +39,7 @@ jobs:
       - name: Prepare variables
         id: variables
         run: |
-          if [ -n "${{ matrix.shield }}" ]; then
-            ARTIFACT_NAME="${{ matrix.shield }}-${{ matrix.board }}-${{ steps.timestamp.outputs.timestamp }}-zmk"
-          else
-            ARTIFACT_NAME="${{ matrix.board }}-${{ steps.timestamp.outputs.timestamp }}-zmk"
-          fi
-
-          echo ::set-output name=shield-arg::${SHIELD_ARG}
+          ARTIFACT_NAME="bt60-v2-${{ steps.timestamp.outputs.timestamp }}-zmk"
           echo ::set-output name=artifact-name::${ARTIFACT_NAME}
       - name: West Build (bt60)
         run: west build -s zmk/app -b bt60 -- -DZMK_CONFIG="${GITHUB_WORKSPACE}/config"
