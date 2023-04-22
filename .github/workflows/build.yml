@@ -9,9 +9,6 @@ jobs:
       image: zmkfirmware/zmk-build-arm:stable
     name: Build
     steps:
-      - name: Define build timestamp
-        id: timestamp
-        run: echo "::set-output name=timestamp::$(date +'%H%M%S-%d%m%Y')"
       - name: Checkout
         uses: actions/checkout@v3
       - name: Cache west modules
@@ -39,8 +36,9 @@ jobs:
       - name: Prepare variables
         id: variables
         run: |
-          ARTIFACT_NAME="bt60-v2-${{ steps.timestamp.outputs.timestamp }}-zmk"
-          echo ::set-output name=artifact-name::${ARTIFACT_NAME}
+          TIMESTAMP=$(date +'%Y%m%d-%H%M%S')
+          ARTIFACT_NAME="bt60-$TIMESTAMP-zmk"
+          echo "artifact-name=${ARTIFACT_NAME}" >> $GITHUB_OUTPUT
       - name: West Build (bt60)
         run: west build -s zmk/app -b bt60 -- -DZMK_CONFIG="${GITHUB_WORKSPACE}/config"
       - name: bt60 Kconfig file
