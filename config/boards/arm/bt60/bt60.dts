@@ -27,11 +27,6 @@
 		zmk,battery = &vbatt;
 	};
 
-	sensors {
-		compatible = "zmk,keymap-sensors";
-		sensors = <&encoder_1>;
-	};
-
 	default_transform: keymap_transform_0 {
 		compatible = "zmk,matrix-transform";
 		columns = <15>;
@@ -61,9 +56,9 @@
 			, <&gpio0 29 GPIO_ACTIVE_HIGH>
 			, <&gpio0 30 GPIO_ACTIVE_HIGH>
 			, <&gpio0 31 GPIO_ACTIVE_HIGH>
-			, <&gpio0 10 GPIO_ACTIVE_HIGH>
-			, <&gpio0 9 GPIO_ACTIVE_HIGH>
-			, <&gpio1 6 GPIO_ACTIVE_HIGH>
+			, <&gpio0 6 GPIO_ACTIVE_HIGH> /* 0 5 -> 0 6 */
+			, <&gpio0 26 GPIO_ACTIVE_HIGH> /* 0 7 -> 0 26 */
+			, <&gpio0 21 GPIO_ACTIVE_HIGH> /* 1 9 -> 0 21 */
 			, <&gpio0 12 GPIO_ACTIVE_HIGH>
 			, <&gpio0 23 GPIO_ACTIVE_HIGH>
 			;
@@ -81,30 +76,6 @@
 		compatible = "zmk,ext-power-generic";
 		label = "EXT_POWER";
 		control-gpios = <&gpio0 13 GPIO_ACTIVE_HIGH>;
-	};
-	encoder_1: encoder_1 {
-		compatible = "alps,ec11";
-		label = "ENCODER_ONE";
-		a-gpios = <&gpio0 21 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
-		b-gpios = <&gpio0 19 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
-		resolution = <4>;
-		status = "okay";
-	};
-	encoder_2: encoder_2 {
-		compatible = "alps,ec11";
-		label = "ENCODER_TWO";
-		a-gpios = <&gpio0 26 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
-		b-gpios = <&gpio0 6 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
-		resolution = <4>;
-		status = "okay";
-	};
-	encoder_3: encoder_3 {
-		compatible = "alps,ec11";
-		label = "encoder_3";
-		a-gpios = <&gpio0 9 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
-		b-gpios = <&gpio0 10 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
-		resolution = <4>;
-		status = "okay";
 	};
 	backlight: pwmleds {
 		compatible = "pwm-leds";
