@@ -1,4 +1,6 @@
 include:
+  - board: bt60
+    shield: bt60_arrows
   - board: seeeduino_xiao_ble
     shield: bt60_arrows_dongle
     snippet: studio-rpc-usb-uart
