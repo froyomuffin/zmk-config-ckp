@@ -1,2 +1,5 @@
-config BT_60_ARROWS_DONGLE
+config BT60_ARROWS_DONGLE
     def_bool $(shields_list_contains,bt60_arrows_dongle)
+
+config BT60_ARROWS
+    def_bool $(shields_list_contains,bt60_arrows)
