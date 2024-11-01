@@ -1,0 +1,13 @@
+if BT60_ARROWS_DOGLE
+
+# Max 16 characters in keyboard name
+config ZMK_KEYBOARD_NAME
+    default "BT60 Arrows"
+
+config ZMK_SPLIT_ROLE_CENTRAL
+    default y
+
+config ZMK_SPLIT
+    default y
+
+endif
