@@ -2,7 +2,7 @@ if BT60_ARROWS_DONGLE
 
 # Max 16 characters in keyboard name
 config ZMK_KEYBOARD_NAME
-    default "BT60 Arrows"
+    default "BT60A"
 
 config ZMK_SPLIT_ROLE_CENTRAL
     default y
@@ -15,7 +15,7 @@ endif
 if BT60_ARROWS
 
 config ZMK_KEYBOARD_NAME
-    default "BT60 Arrows Keyb"
+    default "BT60A Keyb"
 
 config ZMK_SPLIT
     default y
